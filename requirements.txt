@@ -1,0 +1,18 @@
+# utilities 
+numpy
+pandas 
+
+# face recoginition
+scikit-learn
+dlib-bin
+git+https://github.com/ageitgey/face_recognition_models  # for face enbadding
+setuptools<70.0.0  # this github repo is not the part of python package to setup this we use setuptools
+
+#for database 
+supabase  # its give the database free
+bcrypt  # its give the hashing method ==> its work like if your pass is tushar123 -- > *@(#&($^!(JBIU)
+
+segno    # its help to create qr code
+pillow # its do image preroceesing 
+
+streamlit
