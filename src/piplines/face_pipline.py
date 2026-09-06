@@ -12,7 +12,7 @@ def load_dlib_models():
     detector = dlib.get_frontal_face_detector()  # its give the boundary if the face
 
     sp = dlib.shape_predictor(
-        face_recognition_models.pose_predictor_model_loaction() # its give the landmark of the face
+        face_recognition_models.pose_predictor_model_location() # its give the landmark of the face
     )
 
     facerec = dlib.face_recognition_model_v1(
@@ -30,13 +30,13 @@ def get_face_embedding(image_np):
 
     for face in faces:
         shape = sp(image_np , face)
-        face_descriptor = facerec.compute_face_descriptor(image_np , 1) #128 embeddings
+        face_descriptor = facerec.compute_face_descriptor(image_np , shape ,  1) #128 embeddings
 
         encodings.append(np.array(face_descriptor))
 
     return encodings
 
-@st.cache.resource
+@st.cache_resource
 def get_trained_model():
 
     X = []
@@ -51,7 +51,7 @@ def get_trained_model():
         embeddings = student.get('face_embedding')
         if embeddings:
             X.append(np.array(embeddings))
-            y.append(np.array('student_id'))
+            y.append(student.get('student_id'))
 
     if len(X) == 0:
         return None
@@ -63,7 +63,7 @@ def get_trained_model():
     except ValueError:
         pass
 
-    return {clf : 'clf' , X : 'X' , y : 'y'}
+    return {'clf' : clf , 'X':X , 'y': y }
 
 def train_classifier(): # its train the new faces
     st.cache_resource.clear()
@@ -103,7 +103,8 @@ def predict_attendance(class_image_np):
         if best_match_score <= resembel_threeshold:
             detected_students[predict_id] = True
 
-    return detected_students , all_students , len(encoding)          
+    return detected_students , all_students , len(encodings)          
+
 
 
 

@@ -61,7 +61,7 @@ def process_bulk_audio(audio_bytes ,  candidate_dict , threeshold = 0.65):
             sid , score = identify_speaker(embedding , candidate_dict , threeshold)
 
             if sid:
-                if sid not in identify_speaker or score > identified_results[sid]:
+                if sid not in identified_results or score > identified_results[sid]:
                     identified_results[sid] = sid 
 
         return identified_results

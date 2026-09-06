@@ -1,3 +1,4 @@
+streamlit
 # utilities 
 numpy
 pandas 
@@ -15,7 +16,7 @@ bcrypt  # its give the hashing method ==> its work like if your pass is tushar12
 segno    # its help to create qr code
 pillow # its do image preroceesing 
 
-streamlit
+
 
 librosa # its for edit file  , modify file to the audio file 
 resemblyzer # its for voice embeddings 

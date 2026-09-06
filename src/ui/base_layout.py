@@ -78,7 +78,7 @@ def style_base_layout():
                 
                 button{
                     boarder-radius : 1.5rem  !important;
-                    background : #5865F2 !important;
+                    background-color : #5865F2 !important;
                     color : white !important;
                     padding : 10px 20px  !important;
                     border : none !important;
@@ -88,7 +88,7 @@ def style_base_layout():
 
                 button[kind = 'secondary']{
                     boarder-radius : 1.5rem  !important;
-                    background : #EB459E !important;
+                    background-color : #EB459E !important;
                     color : white !important;
                     padding : 10px 20px  !important;
                     border : none !important;
@@ -97,7 +97,7 @@ def style_base_layout():
                 }
                 button[kind = 'tertiary']{
                     boarder-radius : 1.5rem  !important;
-                    background : balck !important;
+                    background-color : black !important;
                     color : white !important;
                     padding : 10px 20px  !important;
                     border : none !important;
