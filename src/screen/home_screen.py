@@ -5,8 +5,7 @@ from src.ui.base_layout import style_background_dashboard
 from src.ui.base_layout import style_base_layout
 def home_screen():
     
-    # style_background_home()
-    style_background_dashboard()
+    style_background_home()
     style_base_layout()
     header_home()
     col1 , col2 = st.columns(2 , gap = "large")

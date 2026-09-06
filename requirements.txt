@@ -16,3 +16,6 @@ segno    # its help to create qr code
 pillow # its do image preroceesing 
 
 streamlit
+
+librosa # its for edit file  , modify file to the audio file 
+resemblyzer # its for voice embeddings 

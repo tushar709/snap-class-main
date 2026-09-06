@@ -1,6 +1,6 @@
 import streamlit as st
 
-def style_background_home():
+def style_background_dashboard():
     
     st.markdown("""
        <style>
@@ -9,15 +9,14 @@ def style_background_home():
                 
                     background: #E0E3FF ! important;
                 }
-
-                
+         
                 
        </style>                   
 
 
        """ , unsafe_allow_html=True)
 
-def style_background_dashboard():
+def style_background_home():
     
     st.markdown("""
        <style>
