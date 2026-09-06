@@ -104,7 +104,7 @@ def student_screen():
     st.space()
     st.space()
 
-    show_registration = False
+    show_registration = True
     photo_source = st.camera_input("Position your face in the center ")
     
     if photo_source:
