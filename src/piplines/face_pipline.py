@@ -1,4 +1,4 @@
-
+import cv2
 import dlib
 import numpy as np
 from sklearn.svm import SVC
@@ -24,28 +24,35 @@ def load_dlib_models():
     return detector, sp, facerec
 
 
+
 def get_face_embedding(image_np):
 
     detector, sp, facerec = load_dlib_models()
 
-    # Validate image
+    # Ensure RGB image
     image_np = np.asarray(image_np)
 
     if image_np.dtype != np.uint8:
         image_np = np.clip(image_np, 0, 255).astype(np.uint8)
 
     if image_np.ndim != 3 or image_np.shape[2] != 3:
-        raise ValueError("Expected an RGB image with 3 channels")
-
-    # Convert RGB to grayscale for face detection
-    gray = np.ascontiguousarray(
-        np.mean(image_np, axis=2).astype(np.uint8)
-    )
+        raise ValueError("Invalid image format. Expected RGB image.")
 
     image_np = np.ascontiguousarray(image_np)
 
-    # Increase upsampling to detect smaller faces
-    faces = detector(gray, 2)
+    # Convert RGB to grayscale
+    gray = cv2.cvtColor(image_np, cv2.COLOR_RGB2GRAY)
+
+    # Improve contrast in low-light images
+    clahe = cv2.createCLAHE(
+        clipLimit=2.0,
+        tileGridSize=(8, 8)
+    )
+
+    enhanced_gray = clahe.apply(gray)
+
+    # Detect faces
+    faces = detector(enhanced_gray, 2)
 
     encodings = []
 
@@ -62,6 +69,7 @@ def get_face_embedding(image_np):
         encodings.append(np.array(face_descriptor))
 
     return encodings
+
 
 
 @st.cache_resource
