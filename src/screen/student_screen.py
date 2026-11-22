@@ -125,18 +125,9 @@ def student_screen():
 
     show_registration = True
 
-    st.subheader("Face Registration")
-
     photo_source = st.camera_input(
-         "Capture your face",
-          key="student_face_camera"
-    )
-
-    if photo_source is not None:
-        st.success("Face captured successfully!")
-        st.image(photo_source, caption="Captured Face", width=250)
-    else:
-       st.warning("Please capture your face before registration.")
+         "Position your face in the center"
+     )
 
     if photo_source is not None:
 
