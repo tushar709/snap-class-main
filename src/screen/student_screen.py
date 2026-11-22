@@ -124,6 +124,10 @@ def student_screen():
     st.space()
 
     show_registration = True
+    photo_source = st.camera_input("Position your face in the center ")
+    
+    if photo_source:
+        img = np.array(Image.open(photo_source)) # covert image into numpy array
 
     photo_source = st.camera_input(
          "Position your face in the center"
