@@ -20,3 +20,5 @@ pillow # its do image preroceesing
 
 librosa # its for edit file  , modify file to the audio file 
 resemblyzer # its for voice embeddings 
+
+opencv-python-headless
