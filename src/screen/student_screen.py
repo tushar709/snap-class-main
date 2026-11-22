@@ -9,7 +9,16 @@ import time
 from src.piplines.voice_pipline import get_voice_embeddings
 from src.components.dialogue_enroll import enroll_dialogue
 from src.components.subject_card import subject_card
+import io 
 
+def process_uploaded_image(photo_source):
+    image_bytes = photo_source.getvalue()
+
+    image = Image.open(io.BytesIO(image_bytes))
+    image = image.convert("RGB")
+
+    return np.array(image)
+    
 def student_dashboard():
     student_data = st.session_state.student_data
     student_id = student_data['student_id']
